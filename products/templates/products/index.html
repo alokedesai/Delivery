@@ -2,7 +2,8 @@
 <head>
 	<title>Products</title>
 	{% load staticfiles %}
-
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://cdncatalog.com/assets/flat-ui/css/flat-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'products/styles.css' %}" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://isotope.metafizzy.co/beta/isotope.pkgd.min.js"></script>
@@ -10,10 +11,10 @@
 </head>
 	<body>
 		<div id="filters" class="button-group">
-		  <button data-filter="*">show all</button>
-		  <button data-filter=".Drinks">Drinks</button>
-		  <button data-filter=".Vegetables">Vegetables</button>
-		  <button data-filter=".Healthy-Food">Healthy Food</button>
+		  <button class="btn btn-primary" data-filter="*">show all</button>
+		  <button class="btn btn-primary" data-filter=".Drinks">Drinks</button>
+		  <button class="btn btn-primary" data-filter=".Vegetables">Vegetables</button>
+		  <button class="btn btn-primary" data-filter=".Healthy-Food">Healthy Food</button>
 
 		</div>
 	<div id="container">
@@ -21,7 +22,11 @@
 		
 		<div class="item {{items.type}}">
 			<img src="{% static 'products/images/gatorade.png' %}">
-			{{items.name}} - ${{items.price}}</div>
+			<div class="description">
+				<strong>{{items.name}} - ${{items.price}}</strong>
+			</div>
+
+		</div>
 		{% endfor %}
 
 
