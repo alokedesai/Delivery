@@ -1,0 +1,18 @@
+  <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total_price }}</td>
+        </tr>
+        {% endfor %}
+        <div id="pay_button">
+     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_pta8G0YCcDW4YKCM3aNMpqaL" data-amount="{{total}}" data-name="5C Delivery" data-description="Your Order" >
+    </script>
+    </div>
+    </table>
