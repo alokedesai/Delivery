@@ -27,7 +27,9 @@ def get_cart(request):
     return render(request,'products/cart.html', dict(cart=Cart(request), total=total*100))
 def index(request):
     products = Product.objects.all()[:5]
-    return render(request, "products/index.html", dict(products = products))
+    cart = Cart(request)
+    amount = cart.count()
+    return render(request, "products/index.html", dict(products = products, amount=amount))
     
 def add(request,prod,amount):
     add_to_cart(request, prod, amount)
