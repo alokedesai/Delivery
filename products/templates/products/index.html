@@ -13,11 +13,15 @@
 		  <button data-filter="*">show all</button>
 		  <button data-filter=".Drinks">Drinks</button>
 		  <button data-filter=".Vegetables">Vegetables</button>
+		  <button data-filter=".Healthy-Food">Healthy Food</button>
 
 		</div>
 	<div id="container">
 		{% for items in products%}
-		<div class="item {{items.type}}">{{items.name}} - ${{items.price}}</div>
+		
+		<div class="item {{items.type}}">
+			<img src="{% static 'products/images/gatorade.png' %}">
+			{{items.name}} - ${{items.price}}</div>
 		{% endfor %}
 
 
