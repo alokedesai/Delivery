@@ -1,4 +1,14 @@
-  <table>
+<html>
+<head>
+    <title>Cart</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/flat-ui.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/styles.css' %}" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <table class="table table-striped">
         <tr>
             <th>Product</th>
             <th>Quantity</th>
@@ -8,11 +18,15 @@
         <tr>
             <td>{{ item.product.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td>{{ item.total_price }}</td>
+            <td>${{ item.total_price }}</td>
         </tr>
         {% endfor %}
-        <div id="pay_button">
+       
+    </table>
+     <div id="pay_button">
      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_pta8G0YCcDW4YKCM3aNMpqaL" data-amount="{{total}}" data-name="5C Delivery" data-description="Your Order" >
     </script>
     </div>
-    </table>
+</body>
+</html>
+  

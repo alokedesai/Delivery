@@ -1,3 +1,9 @@
+img {
+	opacity: 0.4;
+}
+.product-image:hover{
+	opacity: 1.0
+}
 .item{
 	height: 150px;
 	width: 100px;
@@ -7,5 +13,8 @@
 	width: 600px;
 }
 .description{
+	text-align: center;
+}
+.pay-button{
 	text-align: center;
 }
