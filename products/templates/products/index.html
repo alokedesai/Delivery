@@ -29,7 +29,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#fakelink">
+                  <a href="{% url 'products.views.get_cart' %}">
                     Cart
                   </a>
                   <span class="badge badge-important">{{amount}}</span>
@@ -42,8 +42,9 @@
               </ul>
             </div><!--/.nav -->
           </div>
-		<div id="filters" class="button-group">
-		  <button class="btn btn-lg btn-inverse" data-filter="*">show all</button>
+          <div class="container">
+          	<div id="filters" class="button-group">
+		  <button class="btn btn-lg btn-inverse" data-filter="*">Show All</button>
 		  <button class="btn btn-lg btn-inverse" data-filter=".Drinks">Drinks</button>
 		  <button class="btn btn-lg btn-inverse" data-filter=".Vegetables">Vegetables</button>
 		  <button class="btn btn-lg btn-inverse" data-filter=".Healthy-Food">Healthy Food</button>
@@ -51,9 +52,8 @@
 		</div>
 	<div id="container">
 		{% for items in products%}
-		
 		<div class="item {{items.type}}">
-			<img src="{% static 'products/images/gatorade.png' %}">
+			<img class="product-image" src="{{items.image.url}}">
 			<div class="description">
 				{{items.name}} - ${{items.price}}
 			</div>
@@ -63,6 +63,9 @@
 
 
 	</div>
+
+          </div>
+		
 	
 	<script type="text/javascript">var $container = $('#container');
 // init
