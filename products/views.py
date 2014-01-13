@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 
 # Create your views here.
-from products.models import Product
+from products.models import Product,Type
 from cart import Cart
 
 def add_to_cart(request,product_id, quantity):
@@ -26,10 +26,11 @@ def get_cart(request):
     total = cart.summary()
     return render(request,'products/cart.html', dict(cart=Cart(request), total=total*100))
 def index(request):
-    products = Product.objects.all()[:5]
+    products = Product.objects.all()
+    types = Type.objects.all()
     cart = Cart(request)
     amount = cart.count()
-    return render(request, "products/index.html", dict(products = products, amount=amount))
+    return render(request, "products/index.html", dict(products = products, amount=amount, types=types))
     
 def add(request,prod,amount):
     add_to_cart(request, prod, amount)
