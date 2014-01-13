@@ -45,15 +45,15 @@
           <div class="container">
           	<div id="filters" class="button-group">
 		  <button class="btn btn-lg btn-inverse" data-filter="*">Show All</button>
-		  <button class="btn btn-lg btn-inverse" data-filter=".Drinks">Drinks</button>
-		  <button class="btn btn-lg btn-inverse" data-filter=".Vegetables">Vegetables</button>
-		  <button class="btn btn-lg btn-inverse" data-filter=".Healthy-Food">Healthy Food</button>
+		  {% for type in types%}
+		  <button class="btn btn-lg btn-inverse" data-filter=".{{type}}">{{type}}</button>
+		  {% endfor %}
 
 		</div>
 	<div id="container">
 		{% for items in products%}
 		<div class="item {{items.type}}">
-			<img class="product-image" src="{{items.image.url}}">
+			<img class="product-image" src="{{items.image.url}}" height="92">
 			<div class="description">
 				{{items.name}} - ${{items.price}}
 			</div>
