@@ -1,6 +1,9 @@
 from django.contrib import admin
-from products.models import Product,Type
+from products.models import Products,PCs,Laptops,Printers
 # Register your models here.
 
-admin.site.register(Product)
-admin.site.register(Type)
+
+admin.site.register(Products)
+admin.site.register(PCs)
+admin.site.register(Laptops)
+admin.site.register(Printers)

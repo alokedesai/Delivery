@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>{{product.name}}</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'products/bootstrap/css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/flat-ui.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/styles.css' %}" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'products/js/bootstrap.min.js'  %}"></script>
+<script type="text/javascript" src="{% static 'products/js/bootstrap-select.js'  %}"></script>
+</head>
+<body>
+	<div class="container">
+		{% if messages %}
+		
+		    {% for message in messages %}
+		    <div class="alert alert-danger alert-dismissable">
+			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			  Please select a <strong>quantity</strong>.
+			</div>
+		    {% endfor %}
+		
+		{% endif %}
+		<div class="row">
+			<div class="col-md-4">
+				<img style="padding-top: 50px" src="{{product.image.url}}" height="250">
+			</div>
+			<div class="col-md-8">
+					<h2>{{product.name}}</h2>
+					<div class="lead">${{product.price}}</div>
+					<div>{{product.description}}</div>
+
+				<div class="add-to-cart" style="margin: 60px 0px;">
+					<form method="post" action="{% url 'products.views.cartForm' product.id %}">
+						{% csrf_token %}
+						<select name="quantity">
+							<option value="" disabled="disabled" selected="selected">Quantity</option>
+							{% for number in "123456789" %}
+							  <option value="{{number}}">{{number}}</option>
+							{% endfor %}
+							</select>
+						<br>
+						<button type="submit" style="width: 220px" class="btn btn-lg btn-primary">Add to Cart</button>
+
+					</form>
+					
+				</div>
+					
+
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$("select").selectpicker({style: 'btn btn-inverse', menuStyle: 'dropdown-inverse'})
+	</script>
+
+</body>
+</html>

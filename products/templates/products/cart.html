@@ -8,25 +8,73 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-    <table class="table table-striped">
+
+<div class="container">
+     <table class="table table-striped table-hover cart">
+    <thead>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th></th>
+    </thead>
+    <tbody>
+
+      {% for item in cart %}
         <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
-        </tr>
-        {% for item in cart %}
-        <tr>
-            <td>{{ item.product.name }}</td>
+            <td><strong>{{ item.product.name }}</strong></td>
             <td>{{ item.quantity }}</td>
             <td>${{ item.total_price }}</td>
+            <td>
+                <div> 
+                    <form>
+                        <span class="glyphicon glyphicon-remove" style="color:#2980B9;"></span> 
+                    </form>  
+                    
+                </div>
+
+            </td>
         </tr>
         {% endfor %}
-       
-    </table>
-     <div id="pay_button">
+
+    </tbody>
+</table>
+<h5>Total Price: ${{total}}</h5>
+
+
+
+     <!-- <div id="pay_button">
      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_pta8G0YCcDW4YKCM3aNMpqaL" data-amount="{{total}}" data-name="5C Delivery" data-description="Your Order" >
     </script>
-    </div>
+    </div> -->
+    <div style="text-align:center;">
+            <button class="btn btn-primary btn-lg btn-wide" id="checkout" >Checkout</button>
+        </div>
+
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_pta8G0YCcDW4YKCM3aNMpqaL',
+    image: '/square-image.png',
+    token: function(token, args) {
+      // Use the token to create the charge with a server-side script.
+    }
+  });
+
+  document.getElementById('checkout').addEventListener('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: '5C Delivery',
+      description: '{{orders}} Products (${{total}})',
+      amount: {{stripe_total}}
+    });
+    e.preventDefault();
+  });
+</script>
+</div>
+<!-- <table class="flat-table flat-table-3"> -->
+   
+    
 </body>
 </html>
   

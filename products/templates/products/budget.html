@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>PC/Printer Budget</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/bootstrap.min.css' %}">
+</head>
+<body>
+	<div class="container">
+		{% if error %} 
+		<div class="alert alert-danger">Error. Please enter in both a speed and budget.</div>
+		{% endif %}
+		<h2>PC/Printer Budget</h2>
+			<form method="get" role="form" class="form-inline">
+				<input name="price" class="form-control" placeholder="Budget">
+				<input name="speed" class="form-control" placeholder="PC Speed">
+				<input type="submit" class="form-control" value="submit">
+			</form>
+		{% if params %}
+			{% if pc %} 
+				<h3>The Printer/PC combination is:</h3>
+				<p><strong>Printer</strong>: Model Number: {{printer.model.model}}, Color: {{printer.color}}, Price: {{printer.price}}</p> 
+				<p><strong>PC</strong>: Model Number: {{pc.model.model}}, Speed: {{pc.speed}} GHz, Price: {{printer.price}} </p>
+			{% else %}
+				No PC, printer combination is under the given budget with the given budget
+			{% endif %}
+		{% endif %}
+	</div>
+</body>
+</html>

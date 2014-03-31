@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>Manufacturers</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/bootstrap.min.css' %}">
+</head>
+<body>
+	<div class="container">
+		<h2>Manufacturer</h2>
+		<form method="get" role="form" class="form-inline">
+			<input name="maker" class="form-control" placeholder="Maker">
+			<input type="submit" class="form-control" value="submit">
+		</form>
+		{% if pc %}
+		<h3>PCs:</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Model Number</th>
+				<th>Speed</th>
+				<th>RAM</th>
+				<th>Hard Drive Capacity</th>
+				<th>Price</th>
+			</tr>
+			{% for item in pc %}
+			<tr>
+				<td>{{item.model.model}}</td>
+				<td>{{item.speed}} GHz</td>
+				<td>{{item.ram}} GB</td>
+				<td>{{item.hd}} GB</td>
+				<td>${{item.price}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+
+		{% if laptop %}
+		<h3>Laptops:</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Model Number</th>
+				<th>Speed</th>
+				<th>RAM</th>
+				<th>Hard Drive Capacity</th>
+				<th> Screen Size</th>
+				<th>Price</th>
+			</tr>
+			{% for item in laptop %}
+			<tr>
+				<td>{{item.model.model}}</td>
+				<td>{{item.speed}} GHz</td>
+				<td>{{item.ram}} GB</td>
+				<td>{{item.hd}} GB</td>
+				<td>{{item.screen}} inches</td>
+				<td>${{item.price}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+
+		{% if printer %}
+		<h3>Printers:</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Model Number</th>
+				<th>Type</th>
+				<th>Color</th>
+				<th>Price</th>
+			</tr>
+			{% for item in printer %}
+			<tr>
+				<td>{{item.model.model}}</td>
+				<td>{{item.type}}</td>
+				<td>{{item.color}}</td>
+				<td>${{item.price}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+	</div>
+	
+
+</body>
+</html>

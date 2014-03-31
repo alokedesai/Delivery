@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Add</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/bootstrap.min.css' %}">
+</head>
+<body>
+	<div class="container">
+		{% if error %}
+		<div class="alert alert-danger">Error. Please enter information for all the fields</div>
+		{% endif %}
+
+		{% if added %} 
+		<div class="alert alert-success">The item was added!</div>
+		{% endif %}
+		<h2>Add PC</h2>
+		<form method="POST" class="form-inline">
+			{% csrf_token %}
+			<input type="text" class="form-control" name="maker" placeholder="maker" >
+			<input type="text" class="form-control" name="model" placeholder="model">
+			<input type="text" class="form-control" name='speed' placeholder="speed">
+			<input type="text" class="form-control" name="ram" placeholder="ram">
+			<input type="text" class="form-control" name='hd' placeholder="hd">
+			<input type="text" class="form-control" name="price" placeholder="price"> 
+			<input type="submit" class="form-control" value="Submit"> 
+		</form>
+	</div>
+</body>
+</html>

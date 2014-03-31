@@ -4,11 +4,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'ecommerce.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-   url(r'^$', 'products.views.index', name='index'),
-   url(r'^cart/', 'products.views.get_cart', name="cart"),
-   url(r'^(?P<prod>\d+)/(?P<amount>\d+)$', "products.views.add", name='add'),
+  	url(r'^add/', 'products.views.add', name="add"),
+  	url(r'^$', 'products.views.index', name="index"),
+    url(r'^price/', 'products.views.price', name="price"),
+    url(r'^minspecs/', 'products.views.minSpecs', name="minSpecs"),
+    url(r'^maker', 'products.views.maker', name="maker"),
+    url(r'^budget/', 'products.views.budget', name="budget"),
 )

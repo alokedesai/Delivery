@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title>Combo</title>
+</head>
+<body>
+{% if pc %} 
+	Printer: Model Number: {{printer.model.model}} Color: {{printer.color}} </br>
+	PC: Model Number: {{pc.model.model}} Speed: {{pc.speed}}
+{% else %}
+No PC, printer combination is under the given budget 
+{% endif %}
+</body>
+</html>

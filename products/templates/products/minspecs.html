@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Minimum Specifications</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/bootstrap.min.css' %}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		{% if error %} 
+		<div class="alert alert-danger">Error. Please enter information for all the fields</div>
+		{% endif %}
+		<h2>Minimum Specifications</h2>
+
+		<form method="get" role="form" class="form-inline">
+			<input name="speed" class="form-control" placeholder="speed">
+			<input name="ram" class="form-control" placeholder="RAM">
+			<input name="hd" class="form-control" placeholder="hd">
+			<input name="screen" class="form-control" placeholder="screen size">
+			<input type="submit" class="form-control" value="submit">
+		</form>
+
+		{% if results %}
+
+		<table class="table table-striped">
+			<tr>
+				<th>Maker</th>
+				<th>Speed</th>
+				<th>RAM</th>
+				<th>HD Capacity</th>
+				<th>Screen Size</th>
+				<th>Price</th>
+			</tr>
+			{% for result in results %}
+				<tr>
+				<td>{{result.model.maker}}</td>
+				<td>{{result.speed}} GHz</td>
+				<td>{{result.ram}} GB</td>
+				<td>{{result.hd}} GB</td>
+				<td>{{result.screen}} inches</td>
+				<td>${{result.price}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+	</div>
+	
+</body>
+</html>

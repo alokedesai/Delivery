@@ -1,89 +1,23 @@
+
 <html>
 <head>
 	<title>Products</title>
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'products/bootstrap/css/bootstrap.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'products/css/flat-ui.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'products/css/styles.css' %}" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="http://isotope.metafizzy.co/beta/isotope.pkgd.min.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/bootstrap.min.css' %}">
 </head>
 	<body>
-		<div class="navbar navbar-inverse">
-          	<div class="navbar-header">
-	          	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-collapse-01"></button>
-          	</div>            
-            <div class="navbar-collapse collapse navbar-collapse-01">
-              <ul class="nav navbar-nav navbar-left">
-                <li>
-                  <a href="#fakelink">
-                    Home
-                    <span class="navbar-unread">1</span>
-                  </a>
-                </li>
-                <li class="active">
-                  <a href="#fakelink">
-                    Messages
-                    <span class="navbar-unread">1</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'products.views.get_cart' %}">
-                    Cart
-                  </a>
-                  <span class="badge badge-important">{{amount}}</span>
-                </li>
-                <li>
-                  <a href="#fakelink">
-                    About Us
-                  </a>
-                </li>
-              </ul>
-            </div><!--/.nav -->
-          </div>
-          <div class="container">
-          	<div id="filters" class="button-group">
-		  <button class="btn btn-lg btn-inverse" data-filter="*">Show All</button>
-		  {% for type in types%}
-		  <button class="btn btn-lg btn-inverse" data-filter=".{{type}}">{{type}}</button>
-		  {% endfor %}
-
-		</div>
-	<div id="container">
-		{% for items in products%}
-		<div class="item {{items.type}}">
-			<img class="product-image" src="{{items.image.url}}" height="92">
-			<div class="description">
-				{{items.name}} - ${{items.price}}
-			</div>
-
-		</div>
-		{% endfor %}
-
-
-	</div>
-
-          </div>
-		
-	
-	<script type="text/javascript">var $container = $('#container');
-// init
-$container.isotope({
-  // options
-  itemSelector: '.item',
-  layoutMode: 'fitRows'
-});
-
-$('#filters').on( 'click', 'button', function( event ) {
-  var filtr = $(this).attr('data-filter');
-  $container.isotope({ filter: filtr });
-});
-
-</script>
-
-
-
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Welcome!</h1>
+        <p>Welcome to Aloke's HW5. Click some of the links below to get started</p>
+        <p><a class="btn btn-primary btn-lg" href="/products/price" role="button">Get Started</a></p>
+      </div>
+      <p> Search for the <a href="/products/price">closest price</a></p>
+      <p> Search for <a href="/products/minspecs">minimum specifications for a laptop</a></p>
+      <p> Search for a <a href="/products/maker">maker</a></p>
+      <p> Search for a <a href="/products/budget">cheap PC/Printer combo</a></p>
+      <p> Add a <a href="/products/add">new PC</a></p>
+    </div>
 	</body>
 </html>
 
